@@ -1,5 +1,4 @@
-#charAnimation
-
+# charAnimation
 将视频转为字符动画
 
 单个字符画缩放到命令行高度可以有效保证视频连贯
