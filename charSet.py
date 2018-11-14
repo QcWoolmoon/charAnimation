@@ -18,9 +18,9 @@ if(cap.isOpened()):
     src = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
 
     #scale = 1/20
-	#最终单个字符画的高度为命令行显示的最多行数(50)，这样连续输出可以保证基本流畅
+    #最终单个字符画的高度为命令行显示的最多行数(50)，这样连续输出可以保证基本流畅
     scale = 50/height#命令行高度
-	#缩放图像，用一个字符代替1/scale * 1/scale个像素点
+    #缩放图像，用一个字符代替1/scale * 1/scale个像素点
     dst = cv2.resize(src,None,fx = scale,fy = scale,interpolation = cv2.INTER_CUBIC)
     h = dst.shape[0]
     w = dst.shape[1]
@@ -29,15 +29,15 @@ if(cap.isOpened()):
         line = ""
         for col in range(w):
             pix = dst[row,col]
-			#将像素值映射到字符集，后接' '规范格式(默认输出有行间距没有字间距)
+	    #将像素值映射到字符集，后接' '规范格式(默认输出有行间距没有字间距)
             i = (int)(pix/256*len(charSet))
             line +=charSet[i] + " "
             #print(charSet[i],end = ' ')
         #print(line)
         M.append(line)
-	#简单的时间控制
+    #简单的时间控制
     time.sleep(0.01)
-	#可以通过清屏避免缩放到命令行高度，但会有闪屏
+    #可以通过清屏避免缩放到命令行高度，但会有闪屏
     #os.system('cls')
     #可以直接将单个字符画存储后再读取，也不用考虑固定高度的限制
     #sys.stdout = open("out.txt",'w')#重定向print
